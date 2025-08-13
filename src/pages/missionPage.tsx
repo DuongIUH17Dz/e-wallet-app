@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const missions = [
+export const missions = [
   {
     img: "/image/mission1.png",
     title: "Review sản phẩm nhận thưởng",
     time: "10D : 23H : 11M",
-    reward: "5,000 $VI",
-    brandLogo: "/image/brand_vidimi.png",
+    reward: "5,000 ",
+    brandLogo: "/image/logo.png",
     brandName: "Vidimi",
     endTime: "10D : 23H : 11M",
     joined: 100,
@@ -25,8 +25,8 @@ const missions = [
     img: "/image/mision2.png",
     title: "Chụp hình cửa hàng mới",
     time: "10D : 23H : 11M",
-    reward: "5,000 $VI",
-    brandLogo: "/image/brand_bb.png",
+    reward: "5,000 ",
+    brandLogo: "/image/logo2.png",
     brandName: "Beloved & Beyond",
     endTime: "10D : 23H : 11M",
     joined: 50,
@@ -42,8 +42,8 @@ const missions = [
     img: "/image/mission1.png",
     title: "Check-in cửa hàng",
     time: "5D : 12H : 30M",
-    reward: "3,000 $VI",
-    brandLogo: "/image/brand_brownies.png",
+    reward: "3,000 ",
+    brandLogo: "/image/logo.png",
     brandName: "The Brownies",
     endTime: "5D : 12H : 30M",
     joined: 20,
@@ -143,7 +143,9 @@ export const MissionPage: React.FC = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                cursor: "pointer",
               }}
+              onClick={() => navigate(`/mission/${idx}`)}
             >
               <div style={{ position: "relative", width: "100%" }}>
                 <img
@@ -192,6 +194,7 @@ export const MissionPage: React.FC = () => {
                   fontSize: 15,
                   cursor: "pointer",
                 }}
+                
               >
                 Tham gia
               </button>
