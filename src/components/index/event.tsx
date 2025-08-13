@@ -145,7 +145,7 @@ export const Event: FC = () => {
               width: 12,
               height: 12,
               borderRadius: "50%",
-              background: idx === current ? "#B600C4" : "#E5E5E5",
+              background: idx === current ? "#B600C4" : "#b8b7b7ff",
               display: "inline-block",
               cursor: "pointer",
               transition: "background 0.2s",

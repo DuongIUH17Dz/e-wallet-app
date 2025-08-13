@@ -48,7 +48,7 @@ export const Banner: FC = () => {
         src="/image/camera-dynamic-02.png"
         alt="Camera"
         style={{
-          position: "absolute",
+          position: "absolute" ,
           top: "-40px",
           left: "160px",
           width: "160px",
