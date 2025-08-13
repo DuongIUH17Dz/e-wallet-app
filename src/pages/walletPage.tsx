@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import IntroductionWallet from "../components/introductionwallet";
+// ...existing code...
 
 // Dữ liệu ví, bổ sung thêm các trường cần thiết
 const wallets = [
@@ -35,6 +37,7 @@ const wallets = [
 export const WalletPage: React.FC = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [showGuide, setShowGuide] = useState(false);
 
   // Lọc ví theo tên
   const filteredWallets = wallets.filter(w =>
@@ -56,7 +59,7 @@ export const WalletPage: React.FC = () => {
     </svg>
   </span>
   {/* Tiêu đề */}
-  <span style={{ fontSize: 22, fontWeight: 700, color: "#232B3A", flex: 1 }}>
+  <span style={{ fontSize: 22, fontWeight: 700, color: "#232B3A", flex: 1 }} onClick={() => setShowGuide(true)}>
     Ví điểm của bạn
   </span>
   {/* Hướng dẫn ví */}
@@ -68,7 +71,7 @@ export const WalletPage: React.FC = () => {
       cursor: "pointer",
       marginLeft: 12,
     }}
-    onClick={() => alert("Hướng dẫn ví")}
+    onClick={() => setShowGuide(true)}
   >
     Hướng dẫn ví
   </span>
@@ -180,7 +183,7 @@ export const WalletPage: React.FC = () => {
     marginTop: 8,
   }}
 >
-  {/* Đơn vị */}
+   {/* Đơn vị */}
   <span style={{ fontSize: 14, color: "#7A89A8",marginLeft:-55 }}>{w.unit}</span>
   {/* Số lượng */}
   <span style={{ textAlign: "left" }}>{w.amount}</span>
@@ -208,6 +211,7 @@ export const WalletPage: React.FC = () => {
           </div>
         )}
       </div>
+      <IntroductionWallet open={showGuide} onClose={() => setShowGuide(false)} />
     </div>
   );
 };
