@@ -79,7 +79,8 @@ export const Mission: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
+              cursor: "pointer",
+            }}onClick={() => navigate(`/mission/${idx}`)}
           >
             <div style={{ position: "relative", width: "100%" }}>
               <img

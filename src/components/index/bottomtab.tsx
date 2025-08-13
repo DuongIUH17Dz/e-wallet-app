@@ -1,5 +1,6 @@
 import React from "react";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 const tabs = [
   {
     label: "Trang chủ",
@@ -60,6 +61,7 @@ const tabs = [
   {
     label: "Tài khoản",
     icon: (
+
       <svg width="22" height="22" viewBox="0 0 25 24" fill="none">
         <path d="M20.4004 21V19C20.4004 17.9391 19.979 16.9217 19.2288 16.1716C18.4787 15.4214 17.4613 15 16.4004 15H8.40039C7.33952 15 6.32211 15.4214 5.57196 16.1716C4.82182 16.9217 4.40039 17.9391 4.40039 19V21M16.4004 7C16.4004 9.20914 14.6095 11 12.4004 11C10.1913 11 8.40039 9.20914 8.40039 7C8.40039 4.79086 10.1913 3 12.4004 3C14.6095 3 16.4004 4.79086 16.4004 7Z" stroke="#7A89A8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
@@ -69,6 +71,8 @@ const tabs = [
 ];
 
 export const BottomTab: FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       style={{
@@ -98,10 +102,25 @@ export const BottomTab: FC = () => {
             color: tab.active ? "#B600C4" : "#7A89A8",
             fontWeight: tab.active ? 700 : 500,
             fontSize: 16,
-            paddingBottom: tab.highlight ? 0 : 12,
+            paddingBottom: tab.label === "Quét QR" ? 0 : 0,
             position: "relative",
             
             
+          }}
+          onClick={() => {
+            if (tab.label === "Tài khoản") {
+              navigate("/account");
+            }
+            else if (tab.label === "Trang chủ") {
+              navigate("/");
+            } else if (tab.label === "Khám phá") {
+              navigate("/explore");
+            } else if (tab.label === "Quét QR") {
+              navigate("/scan");
+            } else if (tab.label === "Cộng đồng") {
+              navigate("/community");
+            }
+            // Thêm điều hướng cho các tab khác nếu muốn
           }}
         >
           <div

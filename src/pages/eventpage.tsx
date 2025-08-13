@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const events = [
+export const events = [
   {
     logo: "/image/logo2.png",
     title: "Workshop Vidimi",
@@ -11,6 +11,23 @@ const events = [
     location: "232/6 Võ Thị Sáu",
     reward: "+10,000 $VI",
     state: "Upcoming",
+    steps: [
+    {
+      label: "Tham gia sự kiện",
+      desc: "Đăng ký tham gia để BTC tiếp đón bạn tốt hơn",
+      done: true,
+    },
+    {
+      label: "Check-in tại sự kiện",
+      desc: "Quét mã check-in tại quầy sự kiện",
+      done: false,
+    },
+    {
+      label: "Nhận +10,000 $VI",
+      desc: "Sau khi hoàn thành check-in",
+      done: false,
+    },
+  ],
   },
   {
     logo: "/image/logo.png",
@@ -19,6 +36,23 @@ const events = [
     location: "Location",
     reward: "+5,000 $VI",
     state: "Upcoming",
+    steps: [
+    {
+      label: "Tham gia sự kiện",
+      desc: "Đăng ký tham gia để BTC tiếp đón bạn tốt hơn",
+      done: true,
+    },
+    {
+      label: "Check-in tại sự kiện",
+      desc: "Quét mã check-in tại quầy sự kiện",
+      done: true,
+    },
+    {
+      label: "Nhận +10,000 $VI",
+      desc: "Sau khi hoàn thành check-in",
+      done: true,
+    },
+  ],
   },
   {
     logo: "/image/logo2.png",
@@ -27,6 +61,23 @@ const events = [
     location: "Location",
     reward: "+2,000 $VI",
     state: "Took place",
+    steps: [
+    {
+      label: "Tham gia sự kiện",
+      desc: "Đăng ký tham gia để BTC tiếp đón bạn tốt hơn",
+      done: true,
+    },
+    {
+      label: "Check-in tại sự kiện",
+      desc: "Quét mã check-in tại quầy sự kiện",
+      done: false,
+    },
+    {
+      label: "Nhận +10,000 $VI",
+      desc: "Sau khi hoàn thành check-in",
+      done: false,
+    },
+  ],
   },
 ];
 
@@ -85,10 +136,11 @@ export const EventPage: React.FC = () => {
         </div>
       </div>
       {/* Event List */}
-      <div style={{ padding: "24px 18px 0 18px" }}>
+      <div style={{ padding: "24px 18px 0 18px" }} >
         {filteredEvents.map((e, idx) => (
           <div
             key={idx}
+            onClick={() => navigate(`/event/${idx}`)}
             style={{
               background: "#fff",
               borderRadius: 24,
@@ -98,6 +150,7 @@ export const EventPage: React.FC = () => {
               padding: "16px 18px",
               marginBottom: 18,
               position: "relative",
+              cursor: "pointer",
             }}
           >
             {/* Logo + Reward */}

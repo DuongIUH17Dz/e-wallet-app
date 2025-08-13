@@ -70,7 +70,7 @@ export const Header: FC = () => {
   }}
 >
 			<Box className="flex items-center justify-between mb-2">
-              <img src="/image/logo.png" alt="Vidimi Logo" className="h-8 mt" />
+              <img src="/image/logo.png" alt="Vidimi Logo" className="h-8 mt "  />
               <button
                   className="bg-white bg-opacity-0 rounded-full p-0 flex items-center justify-center mt mr-5"
                   aria-label="Thông báo"

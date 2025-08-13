@@ -1,33 +1,11 @@
 import React, { useState } from "react";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { events } from "@/pages/eventpage";
 
 
 
- export const events = [
-  {
-    logo: "/image/logo2.png",
-    title: "Workshop Vidimi",
-    time: "Saturday, April 12,\n8:30AM - 12:00PM",
-    state: "Upcoming",
-    location: "Location",
-  },
-  {
-    logo: "/image/logo.png",
-    title: "Workshop Vidimi",
-    time: "Saturday, April 12,\n8:30AM - 12:00PM",
-    state: "Upcoming",
-    location: "Location",
-  },
-  {
-    logo: "/image/logo2.png",
-    title: "Workshop Vidimi",
-    time: "Saturday, April 12,\n8:30AM - 12:00PM",
-    state: "took place",
-    location: "Location",
-  },
-  // Thêm sự kiện khác nếu muốn
-];
+
 
 const rewardSvg = (
   <svg width="80" height="80" viewBox="0 0 100 128" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", left: 2, top: -22 }}>
@@ -86,7 +64,8 @@ export const Event: FC = () => {
           maxWidth: 340,
           padding: "16px 18px",
           position: "relative",
-        }}>
+          cursor: "pointer",
+        }}onClick={() => navigate(`/event/${current}`)}>
           {/* Logo + Reward */}
           <div style={{ position: "relative", marginRight: 16 }}>
             <img
