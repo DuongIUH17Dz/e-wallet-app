@@ -260,7 +260,7 @@ const ExchangeGift: React.FC = () => {
             fontSize: 16,
             cursor: "pointer",
           }}
-          onClick={() => alert("Đổi quà thành công!")}
+          onClick={() => setShowSuccess(true)}
         >
           Đổi quà
         </button>
@@ -272,7 +272,21 @@ const ExchangeGift: React.FC = () => {
           setShowModal(false);
           // Xử lý khi chọn xong
         }}
+        
       />
+      <ExchangeSuccessModal
+        open={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        onUseNow={() => {
+          setShowSuccess(false);
+          // Xử lý khi bấm Sử dụng ngay
+        }}
+        onLater={() => {
+          setShowSuccess(false);
+          // Xử lý khi bấm Để sau
+        }}
+      />
+
     </div>
   );
 };
