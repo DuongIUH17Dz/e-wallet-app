@@ -17,6 +17,8 @@ import DetailEvent from "@/pages/detailEvent";
 import AccountPage from "@/pages/accountPage";
 import GiftWarehouse from "@/pages/giftWarehouse";  
 import HistoryPage from "@/pages/historyPage";  
+import HistoryDetailPage from "@/pages/historyDetailPage";
+import ExchangeGift from "@/pages/exchangeGift";
 
 const Layout = () => {
   return (
@@ -33,6 +35,8 @@ const Layout = () => {
             <Route path="/account" element={<AccountPage />} />
             <Route path="/gift-warehouse" element={<GiftWarehouse />} />
             <Route path="/history" element={<HistoryPage />} />
+            <Route path="/history/:id" element={<HistoryDetailPage />} />
+            <Route path="/exchange-gift/:id" element={<ExchangeGift />} />
           </AnimationRoutes>
         </ZMPRouter>
       </SnackbarProvider>

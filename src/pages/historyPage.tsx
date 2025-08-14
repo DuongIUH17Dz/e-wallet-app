@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BottomTab } from "../components/index/bottomtab";
+import { useNavigate } from "react-router-dom";
 
 const tabs = [
   "Tất cả",
@@ -72,6 +73,7 @@ const historyData = [
 ];
 
 const HistoryPage: React.FC = () => {
+    const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Tất cả");
   const [mainTab, setMainTab] = useState<"Điểm đã nhận" | "Điểm đã dùng">("Điểm đã nhận");
 
@@ -161,7 +163,9 @@ const HistoryPage: React.FC = () => {
       {/* Danh sách lịch sử */}
       <div style={{ padding: "0 8px" ,marginBottom:50}}>
         {filtered.map((item, idx) => (
-          <div key={idx} style={{
+          <div key={idx} 
+
+           style={{
             background: "#fff",
             borderRadius: 16,
             boxShadow: "0 2px 8px #0001",
@@ -169,7 +173,7 @@ const HistoryPage: React.FC = () => {
             marginBottom: 14,
             display: "flex",
             flexDirection: "column",
-          }}>
+          }} onClick={() => navigate(`/history/${idx}`)}>
             <div style={{ fontWeight: 700, fontSize: 16, color: "#232B3A", marginBottom: 2 }}>
               {item.type}
             </div>
