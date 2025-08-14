@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type GiftItem = {
   image: string;
@@ -29,6 +30,7 @@ const gifts: GiftItem[] = [
 const ITEMS_PER_PAGE = 2;
 
 export const Gift: React.FC = () => {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const totalPages = Math.ceil(gifts.length / ITEMS_PER_PAGE);
   const giftsToShow = gifts.slice(
@@ -39,14 +41,14 @@ export const Gift: React.FC = () => {
   return (
     <div style={{ padding: "16px 0 0 0" }}>
       {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", marginBottom: 12, marginLeft: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", marginBottom: 12, marginLeft: 12 }} >
         <span style={{ fontWeight: 700, fontSize: 20, color: "#232B3A", display: "flex", alignItems: "center" }}>
           <span style={{ marginRight: 6 }}>🎁</span>
           Quà xịn cho bạn
         </span>
       </div>
       {/* Gifts */}
-      <div style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center", marginBottom: 8 }}>
+      <div style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center", marginBottom: 8 }} >
         {giftsToShow.map((g, idx) => (
           <div
             key={idx}
@@ -61,7 +63,7 @@ export const Gift: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
+            }} onClick={() => navigate(`/exchange-gift/${current * ITEMS_PER_PAGE + idx}`)}
           >
             <div style={{ position: "relative", width: "100%" }}>
               <img
