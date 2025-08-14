@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BottomTab } from "../components/index/bottomtab";
 
+
 const AccountPage: React.FC = () => {
     const navigate = useNavigate();
   return (
@@ -46,7 +47,7 @@ const AccountPage: React.FC = () => {
   </div>
   {/* Thông tin tài khoản */}
   <div style={{
-    marginTop: 46,
+   
     background: "#fff",
     borderRadius: 20,
     boxShadow: "0 2px 8px #0001",
@@ -55,8 +56,9 @@ const AccountPage: React.FC = () => {
     margin: "0 auto",
     position: "relative",
     zIndex: 1,
+    marginTop: 40,
   }}>
-    <div style={{ fontWeight: 700, fontSize: 22, color: "#232B3A", marginBottom: 8 }}>
+    <div style={{ fontWeight: 700, fontSize: 22, color: "#232B3A", marginBottom: 8 ,marginTop:2}}>
       Võ Uy Danh
     </div>
     <div style={{ fontSize: 15, color: "#7A89A8", marginBottom: 4 }}>
@@ -85,7 +87,9 @@ const AccountPage: React.FC = () => {
         color: "#B600C4",
         fontSize: 15,
         cursor: "pointer",
-      }}>
+      
+      }} onClick={() => navigate("/gift-warehouse")}>
+        
         <span role="img" aria-label="gift">🎁</span> Kho quà
       </div>
       <div style={{
@@ -99,7 +103,8 @@ const AccountPage: React.FC = () => {
         color: "#B600C4",
         fontSize: 15,
         cursor: "pointer",
-      }}>
+      }}
+        onClick={() => navigate("/history")}>
         <span role="img" aria-label="history">🕑</span> Lịch sử
       </div>
     </div>
@@ -119,8 +124,8 @@ const AccountPage: React.FC = () => {
           fontSize: 20,
           position: "relative",
           cursor: "pointer",
-          overflow: "hidden", // Thêm dòng này để ảnh không bị tràn ra ngoài
-          minHeight: 80,      // Đảm bảo chiều cao tối thiểu cho thẻ
+          overflow: "hidden", 
+          minHeight: 80,     
         }}
       >
         <div style={{ flex: 1 }}>

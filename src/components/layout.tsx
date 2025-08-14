@@ -15,6 +15,8 @@ import WalletPage from "@/pages/walletPage";
 import DetailMission from "@/pages/detailMission";
 import DetailEvent from "@/pages/detailEvent";
 import AccountPage from "@/pages/accountPage";
+import GiftWarehouse from "@/pages/giftWarehouse";  
+import HistoryPage from "@/pages/historyPage";  
 
 const Layout = () => {
   return (
@@ -29,6 +31,8 @@ const Layout = () => {
             <Route path="/mission/:id" element={<DetailMission />} />
             <Route path="/event/:id" element={<DetailEvent />} />
             <Route path="/account" element={<AccountPage />} />
+            <Route path="/gift-warehouse" element={<GiftWarehouse />} />
+            <Route path="/history" element={<HistoryPage />} />
           </AnimationRoutes>
         </ZMPRouter>
       </SnackbarProvider>
