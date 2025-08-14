@@ -1,5 +1,7 @@
-import React from "react";
+import React ,{useState}from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import ChooseGiftModal from "../components/modal/choosegift"; 
+import ExchangeSuccessModal from "@/components/modal/exchengesuccess";
 
 const gift = {
   img: "/image/voucher1.png",
@@ -22,6 +24,9 @@ const gift = {
 const ExchangeGift: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
 
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
@@ -229,6 +234,7 @@ const ExchangeGift: React.FC = () => {
             fontSize: 18,
             cursor: "pointer",
           }}
+          onClick={() => setShowModal(true)}
         >
           Chọn
         </button>
@@ -259,6 +265,14 @@ const ExchangeGift: React.FC = () => {
           Đổi quà
         </button>
       </div>
+      <ChooseGiftModal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        onOk={(value) => {
+          setShowModal(false);
+          // Xử lý khi chọn xong
+        }}
+      />
     </div>
   );
 };
