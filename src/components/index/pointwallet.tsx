@@ -37,7 +37,7 @@ export const PointWallet: FC = () => {
         </span>
        </div>
       <div
-      className="wallet-scroll"
+      className="tabs-scroll"
         style={{
           display: "flex",
           overflowX: "auto",

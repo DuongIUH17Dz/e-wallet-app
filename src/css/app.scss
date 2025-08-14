@@ -12,3 +12,13 @@
 .zaui-list-item {
   cursor: pointer;
 }
+.tabs-scroll::-webkit-scrollbar {
+  height: 4px; /* Độ cao thanh scroll nhỏ lại */
+}
+.tabs-scroll::-webkit-scrollbar-thumb {
+  background: #e6c6f7;
+  border-radius: 2px;
+}
+.tabs-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}

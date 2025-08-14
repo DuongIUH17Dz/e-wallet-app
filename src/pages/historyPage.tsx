@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BottomTab } from "../components/index/bottomtab";
 
 const tabs = [
   "Tất cả",
@@ -72,6 +73,7 @@ const historyData = [
 
 const HistoryPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("Tất cả");
+  const [mainTab, setMainTab] = useState<"Điểm đã nhận" | "Điểm đã dùng">("Điểm đã nhận");
 
   // Lọc dữ liệu theo tab
   const filtered = activeTab === "Tất cả"
@@ -80,13 +82,59 @@ const HistoryPage: React.FC = () => {
 
   return (
     <div style={{ background: "#F7F7FB", minHeight: "100vh", paddingBottom: 24 }}>
+        <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 0,
+        marginTop: 48,
+        marginBottom: 0,
+      }}>
+        <button
+          onClick={() => setMainTab("Điểm đã nhận")}
+          style={{
+            flex: 1,
+            background: "transparent",
+            border: "none",
+            fontWeight: 700,
+            fontSize: 18,
+            color: mainTab === "Điểm đã nhận" ? "#232B3A" : "#7A89A8",
+            borderBottom: mainTab === "Điểm đã nhận" ? "3px solid #B600C4" : "3px solid transparent",
+            padding: "8px 0",
+            cursor: "pointer",
+            transition: "all 0.2s",
+          }}
+        >
+          Điểm đã nhận
+        </button>
+        <button
+          onClick={() => setMainTab("Điểm đã dùng")}
+          style={{
+            flex: 1,
+            background: "transparent",
+            border: "none",
+            fontWeight: 700,
+            fontSize: 18,
+            color: mainTab === "Điểm đã dùng" ? "#232B3A" : "#7A89A8",
+            borderBottom: mainTab === "Điểm đã dùng" ? "3px solid #B600C4" : "3px solid transparent",
+            padding: "8px 0",
+            cursor: "pointer",
+            transition: "all 0.2s",
+          }}
+        >
+          Điểm đã dùng
+        </button>
+      </div>
       {/* Tabs */}
-      <div style={{
+      <div
+      className="tabs-scroll"
+       style={{
         display: "flex",
         gap: 8,
         padding: "18px 8px 0 8px",
         overflowX: "auto",
         marginBottom: 8,
+        marginTop:-10
       }}>
         {tabs.map(tab => (
           <button
@@ -111,7 +159,7 @@ const HistoryPage: React.FC = () => {
         ))}
       </div>
       {/* Danh sách lịch sử */}
-      <div style={{ padding: "0 8px" }}>
+      <div style={{ padding: "0 8px" ,marginBottom:50}}>
         {filtered.map((item, idx) => (
           <div key={idx} style={{
             background: "#fff",
@@ -142,6 +190,7 @@ const HistoryPage: React.FC = () => {
           </div>
         ))}
       </div>
+      <BottomTab /> 
     </div>
   );
 };
