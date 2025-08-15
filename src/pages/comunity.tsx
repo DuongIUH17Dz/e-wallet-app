@@ -5,7 +5,7 @@ const communities = [
   { name: "Cộng đồng Vidimi", logo: "/image/logo2.png", posts: 6 },
   { name: "Cộng đồng BB", logo: "/image/brand1.png", posts: 2 },
   { name: "Cộng đồng Brownies", logo: "/image/brand2.png", posts: 3 },
-  { name: "Cộng đồng Potato", logo: "/image/potato.png", posts: 3 },
+ 
 ];
 
 const postImages = [
