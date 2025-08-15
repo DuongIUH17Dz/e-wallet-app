@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { events } from "./eventpage";
 
@@ -7,7 +7,19 @@ const DetailEvent: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const event = events[Number(id)];
 
+  // State: đã tham gia sự kiện hay chưa
+  const [joined, setJoined] = useState(false);
+
   if (!event) return <div>Không tìm thấy sự kiện</div>;
+
+  // Cập nhật bước khi đã tham gia
+  const steps = event.steps.map((step, idx) => {
+    if (joined && idx === 0) {
+      return { ...step, done: true };
+    }
+    // Khi chưa tham gia thì tất cả bước đều chưa hoàn thành
+    return { ...step, done: false };
+  });
 
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
@@ -118,38 +130,103 @@ const DetailEvent: React.FC = () => {
           Sự kiện Workshop Vidimi với chủ đề Customer Loyalty sẽ mang lại những góc nhìn đa dạng về cách xây dựng và chăm sóc khách hàng trung thành cho doanh nghiệp; và đặc biệt là có nhiều phần quà tặng hấp dẫn đang chờ đến bạn. Tham gia ngay!
         </div>
         {/* Các bước tham gia */}
-        <div>
-          {event.steps.map((step, idx) => (
+        <div style={{
+          background: "#F7F7FB",
+          borderRadius: 18,
+          padding: "18px 18px 12px 18px",
+          marginBottom: 18,
+        }}>
+          {steps.map((step, idx) => (
             <div key={idx} style={{ display: "flex", alignItems: "center", marginBottom: 10 }}>
               <span style={{ marginRight: 10 }}>
                 {/* SVG bước hoàn thành */}
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                  <rect width="36" height="36" rx="18" fill={step.done ? "#3D7CFF" : "#D6D6D6"}/>
-                  <path d="M24.6673 13L15.5007 22.1667L11.334 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect width="36" height="36" rx="18" fill={step.done ? "#B600C4" : "#D6D6D6"}/>
+                  {step.done ? (
+                    <path d="M24.6673 13L15.5007 22.1667L11.334 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  ) : (
+                    <circle cx="18" cy="18" r="7" fill="#fff"/>
+                  )}
                 </svg>
               </span>
               <div>
-                <div style={{ fontWeight: 700, fontSize: 15, color: "#232B3A" }}>{step.label}</div>
-                <div style={{ fontSize: 14, color: "#7A89A8" }}>{step.desc}</div>
+                <div style={{
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: step.done ? "#B600C4" : "#232B3A"
+                }}>
+                  {step.label}
+                </div>
+                <div style={{
+                  fontSize: 14,
+                  color: step.done ? "#B600C4" : "#7A89A8"
+                }}>
+                  {step.desc}
+                </div>
               </div>
             </div>
           ))}
         </div>
-        {/* Nút tham gia */}
+        {/* Nút tham gia hoặc giao diện mới */}
         <div style={{ margin: "32px 0 24px 0" }}>
-          <button style={{
-            width: "100%",
-            background: "#B600C4",
-            color: "#fff",
-            border: "none",
-            borderRadius: 16,
-            padding: "16px 0",
-            fontWeight: 700,
-            fontSize: 18,
-            cursor: "pointer",
-          }}>
-            Tham gia ngay!
-          </button>
+          {!joined ? (
+            <button
+              style={{
+                width: "100%",
+                background: "#B600C4",
+                color: "#fff",
+                border: "none",
+                borderRadius: 16,
+                padding: "16px 0",
+                fontWeight: 700,
+                fontSize: 18,
+                cursor: "pointer",
+              }}
+              onClick={() => setJoined(true)}
+            >
+              Tham gia ngay!
+            </button>
+          ) : (
+            <div style={{
+              display: "flex",
+              gap: 12,
+              justifyContent: "center",
+            }}>
+              <button
+                style={{
+                  flex: 1,
+                  background: "#fff",
+                  color: "#FF2D55",
+                  
+                  borderRadius: 16,
+                  padding: "16px 0",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  border: "1px solid #FF2D55",
+                  cursor: "pointer",
+                }}
+                onClick={() => setJoined(false)}
+              >
+                Hủy tham gia
+              </button>
+              <button
+                style={{
+                  flex: 1,
+                  background: "#B600C4",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 16,
+                  padding: "16px 0",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  cursor: "pointer",
+                }}
+                // Xử lý check-in ở đây
+              >
+                Check-in
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

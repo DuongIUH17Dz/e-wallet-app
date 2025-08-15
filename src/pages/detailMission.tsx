@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { missions } from "./missionPage";
+import MissionSuccessModal  from "../components/modal/missionSuccess";
 
 export const DetailMission: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const mission = missions[Number(id)];
+  const [joined, setJoined] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Thêm state
 
   if (!mission) return <div>Không tìm thấy nhiệm vụ</div>;
 
@@ -155,26 +158,50 @@ export const DetailMission: React.FC = () => {
       borderRadius: 12,
       padding: "12px 0",
     }}>
-        
-      <span style={{ fontWeight: 700, fontSize: 22, color: "#B600C4" }}><span style={{ fontSize: 12, color: "#7A89A8" }}>Phần thưởng:<br></br></span>
+      <span style={{ fontWeight: 700, fontSize: 22, color: "#B600C4" }}>
+        <span style={{ fontSize: 12, color: "#7A89A8" }}>Phần thưởng:<br /></span>
         {mission.reward} <span style={{ fontSize: 15, color: "#7A89A8" }}>{mission.rewardUnit}</span>
       </span>
-      <button
-        style={{
-          background: "#FFE6CC",
-          color: "#FF6B00",
-          border: "none",
-          borderRadius: 12,
-          padding: "12px 24px",
-          fontWeight: 700,
-          fontSize: 17,
-          cursor: "pointer",
-        }}
-      >
-        Tham gia nhiệm vụ
-      </button>
+      {!joined ? (
+        <button
+          style={{
+            background: "#FFE6CC",
+            color: "#FF6B00",
+            border: "none",
+            borderRadius: 32,
+            padding: "12px 32px",
+            fontWeight: 700,
+            fontSize: 18,
+            cursor: "pointer",
+          }}
+          onClick={() => setJoined(true)}
+        >
+          Tham gia nhiệm vụ
+        </button>
+      ) : (
+        <button
+          style={{
+            background: "#FFE6CC",
+            color: "#FF6B00",
+            border: "none",
+            borderRadius: 32,
+            padding: "12px 32px",
+            fontWeight: 700,
+            fontSize: 18,
+            cursor: "pointer",
+          }}
+          onClick={() => setShowModal(true)} 
+        >
+          Gửi kết quả
+        </button>
+      )}
     </div>
   </div>
+  <MissionSuccessModal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        onOk={() => setShowModal(false)}
+      />
     </div>
   );
 };
