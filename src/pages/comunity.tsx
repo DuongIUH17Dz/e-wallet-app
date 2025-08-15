@@ -53,26 +53,16 @@ const Comunity: React.FC = () => {
             pointerEvents: "none",
           }}
         />
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
         <div style={{ fontWeight: 700, fontSize: 24, color: "#fff", marginBottom: 10 }}>
           Cộng đồng
         </div>
-        <button
-          style={{
-            position: "absolute",
-            top: 24,
-            right: 18,
-            background: "#fff",
-            color: "#B600C4",
-            borderRadius: "50%",
-            width: 36,
-            height: 36,
-            border: "none",
-            fontWeight: 700,
-            fontSize: 24,
-            boxShadow: "0 2px 8px #0002",
-            cursor: "pointer",
-          }}
-        >+</button>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="14" fill="white"/>
+        <path d="M13.9993 8.16602V19.8327M8.16602 13.9993H19.8327" stroke="#B600C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        </div>
+
         {/* Tabs */}
         <div
         className="tabs-scroll-small"
