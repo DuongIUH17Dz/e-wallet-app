@@ -5,6 +5,7 @@ const communities = [
   { name: "Cộng đồng Vidimi", logo: "/image/logo2.png", posts: 6 },
   { name: "Cộng đồng BB", logo: "/image/brand1.png", posts: 2 },
   { name: "Cộng đồng Brownies", logo: "/image/brand2.png", posts: 3 },
+  { name: "Cộng đồng Potato", logo: "/image/potato.png", posts: 3 },
 ];
 
 const postImages = [
@@ -22,6 +23,12 @@ const TABS = [
 
 const Comunity: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [search, setSearch] = useState("");
+
+  // Lọc cộng đồng theo từ khoá tìm kiếm
+  const filteredCommunities = communities.filter(c =>
+    c.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
@@ -106,10 +113,15 @@ const Comunity: React.FC = () => {
           <div style={{ padding: "24px 18px 0 18px" }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
               <span style={{ fontWeight: 700, fontSize: 18 }}>Cộng đồng của bạn</span>
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <rect width="28" height="28" rx="14" fill="#F2C2F7"/>
-                <path d="M8.16602 13.9993H19.8327M19.8327 13.9993L13.9993 8.16602M19.8327 13.9993L13.9993 19.8327" stroke="#3D0043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => setActiveTab(1)}
+              >
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <rect width="28" height="28" rx="14" fill="#F2C2F7"/>
+                  <path d="M8.16602 13.9993H19.8327M19.8327 13.9993L13.9993 8.16602M19.8327 13.9993L13.9993 19.8327" stroke="#3D0043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
             </div>
             <div>
               {communities.map((c, idx) => (
@@ -187,16 +199,25 @@ const Comunity: React.FC = () => {
       )}
       {activeTab === 1 && (
         <div style={{ padding: "24px 18px 0 18px" }}>
-          {/* Giao diện Cộng đồng của bạn */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-            <span style={{ fontWeight: 700, fontSize: 18 }}>Cộng đồng của bạn</span>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <rect width="28" height="28" rx="14" fill="#F2C2F7"/>
-              <path d="M8.16602 13.9993H19.8327M19.8327 13.9993L13.9993 8.16602M19.8327 13.9993L13.9993 19.8327" stroke="#3D0043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
+          {/* Thanh tìm kiếm */}
+          <input
+            type="text"
+            placeholder="Tìm cộng đồng ..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "12px 16px",
+              borderRadius: 12,
+              border: "1px solid #E5E5E5",
+              fontSize: 16,
+              marginBottom: 18,
+              outline: "none",
+            }}
+          />
+          {/* Danh sách cộng đồng */}
           <div>
-            {communities.map((c, idx) => (
+            {filteredCommunities.map((c, idx) => (
               <div key={idx} style={{
                 display: "flex",
                 alignItems: "center",
