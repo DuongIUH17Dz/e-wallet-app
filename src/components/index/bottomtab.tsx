@@ -118,7 +118,7 @@ export const BottomTab: FC = () => {
             } else if (tab.label === "Quét QR") {
               navigate("/scan");
             } else if (tab.label === "Cộng đồng") {
-              navigate("/community");
+              navigate("/comunity");
             }
             // Thêm điều hướng cho các tab khác nếu muốn
           }}

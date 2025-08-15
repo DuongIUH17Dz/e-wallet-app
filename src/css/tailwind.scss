@@ -4,8 +4,11 @@
 .tabs-scroll::-webkit-scrollbar {
   height: 4px; /* Độ cao thanh scroll nhỏ lại */
 }
+.tabs-scroll-small::-webkit-scrollbar {
+  height: 0px; /* Độ cao thanh scroll nhỏ lại */
+}
 .tabs-scroll::-webkit-scrollbar-thumb {
-  background: #E6C6F7;
+  background: #e6c6f7;
   border-radius: 2px;
 }
 .tabs-scroll::-webkit-scrollbar-track {

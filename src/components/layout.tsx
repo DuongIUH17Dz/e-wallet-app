@@ -19,6 +19,7 @@ import GiftWarehouse from "@/pages/giftWarehouse";
 import HistoryPage from "@/pages/historyPage";  
 import HistoryDetailPage from "@/pages/historyDetailPage";
 import ExchangeGift from "@/pages/exchangeGift";
+import Comunity from "@/pages/comunity";
 
 const Layout = () => {
   return (
@@ -37,6 +38,7 @@ const Layout = () => {
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/history/:id" element={<HistoryDetailPage />} />
             <Route path="/exchange-gift/:id" element={<ExchangeGift />} />
+            <Route path="/comunity" element={<Comunity />} />
           </AnimationRoutes>
         </ZMPRouter>
       </SnackbarProvider>
