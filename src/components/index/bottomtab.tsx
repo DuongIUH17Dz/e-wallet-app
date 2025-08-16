@@ -112,7 +112,7 @@ export const BottomTab: FC = () => {
               navigate("/account");
             }
             else if (tab.label === "Trang chủ") {
-              navigate("/");
+              navigate("/index");
             } else if (tab.label === "Khám phá") {
               navigate("/explore");
             } else if (tab.label === "Quét QR") {
