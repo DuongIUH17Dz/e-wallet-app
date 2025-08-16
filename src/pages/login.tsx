@@ -354,8 +354,12 @@ const Login: React.FC = () => {
         textAlign: "center",
         fontSize: 15,
         color: "#232B3A",
-        
-      }}>
+
+      }} onClick={() => {
+        // Chuyển hướng đến trang đăng ký
+        navigate("/register");
+      }}
+      >
         Bạn chưa có tài khoản?{" "}
         <a href="#" style={{ color: "#B600C4", fontWeight: 700, textDecoration: "underline" }}>
           Đăng Ký

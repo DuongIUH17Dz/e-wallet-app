@@ -21,6 +21,7 @@ import HistoryPage from "@/pages/historyPage";
 import HistoryDetailPage from "@/pages/historyDetailPage";
 import ExchangeGift from "@/pages/exchangeGift";
 import Comunity from "@/pages/comunity";
+import Register from "@/pages/register";
 
 const Layout = () => {
   return (
@@ -41,6 +42,7 @@ const Layout = () => {
             <Route path="/history/:id" element={<HistoryDetailPage />} />
             <Route path="/exchange-gift/:id" element={<ExchangeGift />} />
             <Route path="/comunity" element={<Comunity />} />
+            <Route path="/register" element={<Register />} />
           </AnimationRoutes>
         </ZMPRouter>
       </SnackbarProvider>
