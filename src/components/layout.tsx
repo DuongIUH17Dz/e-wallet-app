@@ -8,6 +8,7 @@ import {
 } from "zmp-ui";
 import { AppProps } from "zmp-ui/app";
 
+import Login from "@/pages/login"; // import màn hình đăng nhập
 import HomePage from "@/pages/index";
 import EventPage from "@/pages/eventpage";
 import MissionPage from "@/pages/missionPage";
@@ -27,7 +28,8 @@ const Layout = () => {
       <SnackbarProvider>
         <ZMPRouter>
           <AnimationRoutes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Login />} /> {/* Mặc định là login */}
+            <Route path="/index" element={<HomePage />} /> {/* Trang chủ */}
             <Route path="/eventpage" element={<EventPage />} />
             <Route path="/missionPage" element={<MissionPage />} />
             <Route path="/walletPage" element={<WalletPage />} />
