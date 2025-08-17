@@ -22,6 +22,7 @@ import HistoryDetailPage from "@/pages/historyDetailPage";
 import ExchangeGift from "@/pages/exchangeGift";
 import Comunity from "@/pages/comunity";
 import Register from "@/pages/register";
+import Explore from "@/pages/explore";
 
 const Layout = () => {
   return (
@@ -43,6 +44,7 @@ const Layout = () => {
             <Route path="/exchange-gift/:id" element={<ExchangeGift />} />
             <Route path="/comunity" element={<Comunity />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/explore" element={<Explore />} />
           </AnimationRoutes>
         </ZMPRouter>
       </SnackbarProvider>
